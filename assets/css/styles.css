@@ -303,10 +303,11 @@ main {
 
 .fee-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 0.8rem 0;
     border-bottom: 1px solid #f0f0f0;
+    gap: 1.5rem;
 }
 
 .fee-item:last-child {
@@ -322,6 +323,7 @@ main {
     font-size: 1.3rem;
     font-weight: 500;
     color: #e91e63;
+    text-align: left;
 }
 
 .fee-note {
