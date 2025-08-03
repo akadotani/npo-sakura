@@ -549,6 +549,82 @@ main {
     margin: 0 auto;
 }
 
+/* 受賞情報 */
+.award-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.award-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    border: 2px solid #ffb7c5;
+}
+
+.award-card h3 {
+    color: #e91e63;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', 'Meiryo', serif;
+}
+
+.award-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.award-details {
+    background: rgba(248, 249, 250, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.award-details h4 {
+    color: #e91e63;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', 'Meiryo', serif;
+    text-align: center;
+}
+
+.award-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.award-details li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.award-details li:last-child {
+    border-bottom: none;
+}
+
+.award-details strong {
+    color: #e91e63;
+    font-weight: 500;
+}
+
+.award-note {
+    font-style: italic;
+    color: #888;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
 .support-intro {
     text-align: center;
     margin-bottom: 3rem;
