@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理画面 - NPO法人咲良</title>
+    <meta name="description" content="NPO法人咲良のお問い合わせ管理画面です。">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" type="image/png" href="assets/images/fabicon.png">
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>お問い合わせ管理</h2>
+                <p>管理者ログイン後に、問い合わせ履歴を確認できます。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="admin-container">
+                    <form id="admin-login-form" class="admin-card">
+                        <h3>管理者ログイン</h3>
+                        <label class="form-label" for="admin-email">メールアドレス</label>
+                        <input class="form-input" id="admin-email" name="email" type="email" required>
+
+                        <label class="form-label" for="admin-password">パスワード</label>
+                        <input class="form-input" id="admin-password" name="password" type="password" required>
+
+                        <button class="btn btn-primary" type="submit">ログイン</button>
+                        <p id="admin-login-status" class="form-status" aria-live="polite"></p>
+                    </form>
+
+                    <section id="admin-panel" class="admin-card" hidden>
+                        <div class="admin-panel-header">
+                            <h3>問い合わせ履歴</h3>
+                            <button id="admin-signout" class="btn">ログアウト</button>
+                        </div>
+                        <p id="admin-panel-status" class="form-status" aria-live="polite"></p>
+                        <div class="admin-table-wrap">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>日時</th>
+                                        <th>名前</th>
+                                        <th>メール</th>
+                                        <th>内容</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-contacts-body"></tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+    <script src="assets/js/include.js"></script>
+    <script type="module" src="assets/js/admin.js"></script>
+</body>
+</html>
