@@ -37,13 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (submitButton) submitButton.disabled = true;
     setStatus("送信中です...");
 
-    const { error } = await supabase.functions.invoke("contact-submit", {
-      body: {
-        name,
-        email,
-        message,
-        website,
-      },
+    const { error } = await supabase.from("contacts").insert({
+      name,
+      email,
+      message,
     });
 
     if (submitButton) submitButton.disabled = false;

@@ -47,10 +47,11 @@ Set these repository secrets:
 
 `/Users/atsushi/Develop/npo-sakura/.github/workflows/deploy-pages.yml` generates `assets/js/runtime-config.js` during deployment using these secrets.
 
-## 6. Edge Function deployment
-This contact form calls Supabase Edge Function `contact-submit`.
+## 6. Edge Function deployment (email dispatcher)
+The contact form only writes to `contacts`.
+Email sending is handled by a separate Edge Function that reads unsent rows and sends via Resend.
 
-Deploy the function from private infra repository:
+Deploy from private infra repository:
 
 1. `cd /Users/atsushi/Develop/supabase-infra/projects/npo-sakura`
 2. Configure:
