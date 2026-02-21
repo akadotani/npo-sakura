@@ -60,3 +60,12 @@ Deploy from private infra repository:
 3. Deploy:
    - `./scripts/deploy-function-test.sh`
    - `./scripts/deploy-function-prod.sh`
+
+## 7. Scheduled email dispatch (GitHub Actions)
+`/Users/atsushi/Develop/npo-sakura/.github/workflows/dispatch-contact-email.yml` runs every 10 minutes and triggers the production dispatcher function.
+
+Set these repository or environment secrets:
+- `SUPABASE_PROD_PROJECT_REF`
+- `CONTACT_PROCESSOR_TOKEN`
+
+You can also run it manually from GitHub Actions (`workflow_dispatch`).

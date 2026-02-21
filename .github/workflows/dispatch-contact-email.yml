@@ -1,0 +1,37 @@
+name: Dispatch Contact Emails
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "contact-dispatch"
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate secrets
+        env:
+          SUPABASE_PROD_PROJECT_REF: ${{ secrets.SUPABASE_PROD_PROJECT_REF }}
+          CONTACT_PROCESSOR_TOKEN: ${{ secrets.CONTACT_PROCESSOR_TOKEN }}
+        run: |
+          if [ -z "$SUPABASE_PROD_PROJECT_REF" ] || [ -z "$CONTACT_PROCESSOR_TOKEN" ]; then
+            echo "Missing SUPABASE_PROD_PROJECT_REF or CONTACT_PROCESSOR_TOKEN secret."
+            exit 1
+          fi
+
+      - name: Run dispatcher
+        env:
+          SUPABASE_PROD_PROJECT_REF: ${{ secrets.SUPABASE_PROD_PROJECT_REF }}
+          CONTACT_PROCESSOR_TOKEN: ${{ secrets.CONTACT_PROCESSOR_TOKEN }}
+        run: |
+          curl -fsS -X POST "https://${SUPABASE_PROD_PROJECT_REF}.supabase.co/functions/v1/contact-submit" \
+            -H "content-type: application/json" \
+            -H "x-processor-token: ${CONTACT_PROCESSOR_TOKEN}" \
+            -d '{}'
