@@ -1,10 +1,19 @@
 # Supabase Setup
 
-## 1. Configure client keys
-Edit `/assets/js/supabase-config.js` and set:
+## 1. Configure client keys (runtime config)
+This repository does not commit Supabase URL/key values.
 
-- `SUPABASE_URL`
-- `SUPABASE_ANON_KEY`
+Create runtime config from environment variables:
+
+```bash
+cd /Users/atsushi/Develop/npo-sakura
+SUPABASE_URL="https://<your-project-ref>.supabase.co" \
+SUPABASE_ANON_KEY="<your-anon-key>" \
+./scripts/generate-runtime-config.sh
+```
+
+This generates:
+- `/assets/js/runtime-config.js` (gitignored)
 
 Do not put `service_role` in frontend files.
 
@@ -29,3 +38,11 @@ Expected behavior:
 
 - Anyone can submit contact form.
 - Only logged-in admin users (email listed in `admin_users`) can read contact history.
+
+## 5. GitHub Pages deployment secrets
+Set these repository secrets:
+
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY`
+
+`/Users/atsushi/Develop/npo-sakura/.github/workflows/deploy-pages.yml` generates `assets/js/runtime-config.js` during deployment using these secrets.

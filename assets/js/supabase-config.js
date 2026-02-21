@@ -1,9 +1,8 @@
-export const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
-export const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const appConfig = window.__APP_CONFIG__ || {};
+
+export const SUPABASE_URL = appConfig.SUPABASE_URL || "";
+export const SUPABASE_ANON_KEY = appConfig.SUPABASE_ANON_KEY || "";
 
 export function hasSupabaseConfig() {
-  return (
-    SUPABASE_URL !== "https://YOUR_PROJECT_ID.supabase.co" &&
-    SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY"
-  );
+  return Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 }
