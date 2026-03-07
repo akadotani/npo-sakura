@@ -1,0 +1,33 @@
+name: Keep Dev Supabase Active
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate secrets
+        env:
+          SUPABASE_DEV_PROJECT_REF: ${{ secrets.SUPABASE_DEV_PROJECT_REF }}
+          CONTACT_PROCESSOR_TOKEN: ${{ secrets.CONTACT_PROCESSOR_TOKEN }}
+        run: |
+          if [ -z "$SUPABASE_DEV_PROJECT_REF" ] || [ -z "$CONTACT_PROCESSOR_TOKEN" ]; then
+            echo "Missing SUPABASE_DEV_PROJECT_REF or CONTACT_PROCESSOR_TOKEN secret."
+            exit 1
+          fi
+
+      - name: Ping dev project
+        env:
+          SUPABASE_DEV_PROJECT_REF: ${{ secrets.SUPABASE_DEV_PROJECT_REF }}
+          CONTACT_PROCESSOR_TOKEN: ${{ secrets.CONTACT_PROCESSOR_TOKEN }}
+        run: |
+          curl -fsS -X POST "https://${SUPABASE_DEV_PROJECT_REF}.supabase.co/functions/v1/contact-submit" \
+            -H "content-type: application/json" \
+            -H "x-processor-token: ${CONTACT_PROCESSOR_TOKEN}" \
+            -d '{}'
