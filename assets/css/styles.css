@@ -1029,6 +1029,82 @@ body.menu-open {
     overflow: hidden;
 }
 
+/* 出演情報 */
+.event-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.event-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    border: 2px solid #ffb7c5;
+}
+
+.event-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffb7c5 0%, #ff9a9e 100%);
+    color: white;
+    font-size: 0.85rem;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.event-card h3 {
+    color: #e91e63;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', 'Meiryo', serif;
+    margin-bottom: 0.4rem;
+}
+
+.event-subtitle {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+.event-card > p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.event-details {
+    background: rgba(248, 249, 250, 0.9);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.event-detail-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: baseline;
+}
+
+.event-detail-item:last-child {
+    border-bottom: none;
+}
+
+.event-detail-label {
+    color: #e91e63;
+    font-weight: 400;
+    min-width: 3rem;
+    font-size: 0.9rem;
+}
+
+.event-detail-value {
+    color: #333;
+    line-height: 1.6;
+}
+
 /* 活動報告ページ */
 .report-summary {
     display: grid;
