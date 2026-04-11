@@ -1027,4 +1027,164 @@ main {
 
 body.menu-open {
     overflow: hidden;
-} 
+}
+
+/* 活動報告ページ */
+.report-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.summary-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.summary-number {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #e91e63;
+    font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', 'Meiryo', serif;
+    line-height: 1;
+}
+
+.summary-label {
+    font-size: 1rem;
+    color: #666;
+}
+
+.section-alt {
+    background: rgba(255, 183, 197, 0.08);
+}
+
+.report-month {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    backdrop-filter: blur(5px);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.report-month-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: linear-gradient(135deg, #ffb7c5 0%, #ff9a9e 100%);
+    color: white;
+}
+
+.report-month-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', 'Meiryo', serif;
+    margin: 0;
+    color: white;
+}
+
+.report-count {
+    font-size: 1rem;
+    background: rgba(255,255,255,0.3);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.report-month-body {
+    padding: 1.5rem 2rem 2rem;
+}
+
+.report-activities {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.report-activities li {
+    padding: 0.5rem 0 0.5rem 1.2rem;
+    border-bottom: 1px solid #f5f5f5;
+    color: #555;
+    line-height: 1.6;
+    position: relative;
+}
+
+.report-activities li::before {
+    content: '●';
+    color: #ffb7c5;
+    font-size: 0.6rem;
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+}
+
+.report-activities li:last-child {
+    border-bottom: none;
+}
+
+.report-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.report-photo-item {
+    text-align: center;
+}
+
+.report-img {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+    background: #f9f9f9;
+}
+
+.report-img:hover {
+    transform: scale(1.03);
+}
+
+.photo-caption {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .report-month-header {
+        padding: 1rem 1.2rem;
+    }
+
+    .report-month-body {
+        padding: 1.2rem 1.2rem 1.5rem;
+    }
+
+    .report-photos {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+
+    .report-img {
+        max-height: 200px;
+    }
+
+    .summary-number {
+        font-size: 2.5rem;
+    }
+}
