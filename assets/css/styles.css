@@ -1105,6 +1105,12 @@ body.menu-open {
     line-height: 1.6;
 }
 
+/* 年度ナビ */
+.report-nav {
+    text-align: center;
+    padding: 1rem 0;
+}
+
 /* 協賛ページ */
 .sponsors-intro {
     text-align: center;
