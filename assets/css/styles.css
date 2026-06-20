@@ -1105,6 +1105,98 @@ body.menu-open {
     line-height: 1.6;
 }
 
+/* 協賛ページ */
+.sponsors-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sponsor-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    border: 1px solid #f5d0da;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sponsor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.1);
+}
+
+.sponsor-name {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #333;
+    font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', 'Meiryo', serif;
+    line-height: 1.5;
+}
+
+.sponsor-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.sponsor-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #e91e63;
+    text-decoration: none;
+    border: 1px solid #e91e63;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.sponsor-link:hover {
+    background: #e91e63;
+    color: white;
+}
+
+.sponsors-cta {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.sponsors-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.sponsors-cta p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.sponsors-cta .btn {
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .sponsors-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* 活動報告ページ */
 .report-summary {
     display: grid;
