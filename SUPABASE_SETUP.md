@@ -69,3 +69,5 @@ Set these repository or environment secrets:
 - `CONTACT_PROCESSOR_TOKEN`
 
 You can also run it manually from GitHub Actions (`workflow_dispatch`).
+
+GitHub disables scheduled workflows after 60 days without repository activity. If that happens, the production Supabase project stops receiving requests and is eventually paused (free plan), which breaks the contact form. `.github/workflows/keepalive-workflows.yml` runs monthly and re-enables the scheduled workflows to prevent this.
