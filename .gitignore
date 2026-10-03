@@ -38,3 +38,7 @@ node_modules/
 .env.test.local
 .env.production.local
 assets/js/runtime-config.js
+
+# Playwright
+test-results/
+playwright-report/
