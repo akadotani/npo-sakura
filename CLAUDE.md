@@ -37,3 +37,20 @@
   - ページ内の年度表記（例：「2026年度 協賛企業・団体」）
   - 協賛企業・団体のリスト
 - 掲載順は**五十音順**（「株式会社」等を除いた名称基準、敬称略）
+
+## 同梱している supabase-js の更新
+
+`assets/vendor/supabase-js/<版>/` の supabase-js はリポジトリに同梱しているため、**Dependabot の更新とアラートの対象外**です。手動で更新してください。
+
+- 時期：半年に1回程度、または重大な脆弱性が公表されたとき
+- 現在の版：2.117.2（2026-11 に導入）
+
+手順：
+
+1. `npm view @supabase/supabase-js time --json` で版を確認し、公開から2週間以上経った版を選ぶ
+2. 空の作業用フォルダで `npm pack @supabase/supabase-js@<版>` を実行し、取得物のハッシュを `npm view @supabase/supabase-js@<版> dist.integrity` と照合する
+3. `package/dist/umd/supabase.js` と `package/LICENSE` を `assets/vendor/supabase-js/<版>/` に置き、古い版のフォルダを削除する
+4. `contact.html` の読み込みパスと、この節の「現在の版」を更新する
+5. `npm test` を実行する。問い合わせフォームは実際に1件送り、通知メールまで確認する
+
+`supabase-infra` の Edge Function（`contact-submit/index.ts`）も同じ版に固定しています。あわせて更新し、テスト環境で確認してから本番にデプロイしてください。
