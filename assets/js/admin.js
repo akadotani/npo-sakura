@@ -1,5 +1,6 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 import { SUPABASE_ANON_KEY, SUPABASE_URL, hasSupabaseConfig } from "./supabase-config.js";
+
+const { createClient } = window.supabase;
 
 function setMessage(id, message, isError) {
   const el = document.getElementById(id);
