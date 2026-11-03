@@ -22,24 +22,16 @@ This public repository does not include DB schema SQL.
 
 Apply your schema/RLS SQL from your private infrastructure repository (or run it manually in Supabase SQL Editor).
 
-## 3. Create admin auth user
-In Supabase dashboard:
-
-1. `Authentication` -> `Users`
-2. `Add user`
-3. Create the same email as registered in `admin_users`
-
-## 4. Verify pages
+## 3. Verify pages
 
 - Contact page: `/contact.html`
-- Admin page: `/admin.html`
 
 Expected behavior:
 
 - Anyone can submit contact form.
-- Only logged-in admin users (email listed in `admin_users`) can read contact history.
+- Public clients cannot read contact history. Inquiries arrive by notification email, and stored rows can be viewed in the Supabase dashboard.
 
-## 5. GitHub Pages deployment secrets
+## 4. GitHub Pages deployment secrets
 Set these repository secrets:
 
 - `SUPABASE_URL`
@@ -47,7 +39,7 @@ Set these repository secrets:
 
 `/Users/atsushi/Develop/npo-sakura/.github/workflows/deploy-pages.yml` generates `assets/js/runtime-config.js` during deployment using these secrets.
 
-## 6. Edge Function deployment (email dispatcher)
+## 5. Edge Function deployment (email dispatcher)
 The contact form only writes to `contacts`.
 Email sending is handled by a separate Edge Function that reads unsent rows and sends via Resend.
 
@@ -61,7 +53,7 @@ Deploy from private infra repository:
    - `./scripts/deploy-function-test.sh`
    - `./scripts/deploy-function-prod.sh`
 
-## 7. Scheduled email dispatch (GitHub Actions)
+## 6. Scheduled email dispatch (GitHub Actions)
 `/Users/atsushi/Develop/npo-sakura/.github/workflows/dispatch-contact-email.yml` runs every 10 minutes and triggers the production dispatcher function.
 
 Set these repository or environment secrets:
