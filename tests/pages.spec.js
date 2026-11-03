@@ -9,7 +9,6 @@ const PAGES = [
   { path: "support.html" },
   { path: "sponsors.html" },
   { path: "contact.html" },
-  { path: "admin.html" },
 ];
 
 for (const { path, heading } of PAGES) {
