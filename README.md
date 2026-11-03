@@ -28,6 +28,18 @@ cd npo-sakura
 
 2. Open `index.html` in your browser
 
+## Tests
+
+End-to-end tests use [Playwright](https://playwright.dev/) and live in `tests/`. They serve the site locally, block all external requests, and replace the Supabase client with a stub, so nothing is sent to the production database.
+
+```bash
+npm ci
+npx playwright install chromium
+npm test
+```
+
+The same tests run on GitHub Actions (`.github/workflows/test.yml`) for every pull request and every push to `main`.
+
 ## GitHub Pages Deployment
 
 1. Go to repository settings

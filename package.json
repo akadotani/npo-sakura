@@ -1,0 +1,12 @@
+{
+  "name": "npo-sakura",
+  "private": true,
+  "description": "NPO法人咲良 公式サイト",
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}
