@@ -3,10 +3,11 @@ const base = require("@playwright/test");
 
 // 外部サイトには一切アクセスせず、Supabase クライアントは偽物に差し替える。
 // これにより本番の Supabase にデータが送られることはない。
-const SUPABASE_CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+// 同梱の supabase-js（assets/vendor/supabase-js/<版>/supabase.js）はバージョンを問わず差し替える。
+const SUPABASE_VENDOR = /\/assets\/vendor\/supabase-js\/[^/]+\/supabase\.js$/;
 
 const SUPABASE_STUB = `
-export function createClient() {
+window.supabase = { createClient() {
   const state = (window.__supabaseStub ||= { inserts: [], insertError: null });
   return {
     from(table) {
@@ -24,7 +25,7 @@ export function createClient() {
       async signOut() { return { error: null }; },
     },
   };
-}
+} };
 `;
 
 // デプロイ時に生成される設定ファイル。テストでは既定で「未設定」にしておく。
@@ -41,9 +42,12 @@ exports.test = base.test.extend({
   page: async ({ page, baseURL, supabaseConfigured }, use) => {
     const origin = new URL(/** @type {string} */ (baseURL)).origin;
 
-    await page.route("**/*", (route) => {
+    await page.route("**/*", async (route) => {
       const url = route.request().url();
-      if (url === SUPABASE_CDN) {
+      if (url.startsWith(origin) && SUPABASE_VENDOR.test(new URL(url).pathname)) {
+        // 同梱ファイルが消えていたら気づけるよう、実物があるときだけ差し替える
+        const real = await route.fetch();
+        if (!real.ok()) return route.fulfill({ response: real });
         return route.fulfill({ contentType: "text/javascript", body: SUPABASE_STUB });
       }
       if (url.startsWith(`${origin}/assets/js/runtime-config.js`)) {
