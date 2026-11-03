@@ -108,5 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setMessage("admin-login-status", "ログアウトしました。");
   });
 
+  // 送信処理の登録後に有効化する。未登録のまま送信されるとパスワードがURLに載るため。
+  document.getElementById("admin-login-submit").disabled = false;
+  setMessage("admin-login-status", "");
+
   refreshAuthState();
 });

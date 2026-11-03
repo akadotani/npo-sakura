@@ -53,4 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
     setStatus("送信ありがとうございました。内容を受け付けました。");
   });
+
+  // 送信処理の登録後に有効化する。未登録のまま送信されると入力内容がURLに載るため。
+  if (submitButton) submitButton.disabled = false;
+  setStatus("");
 });
